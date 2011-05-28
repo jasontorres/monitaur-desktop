@@ -1,0 +1,6 @@
+dist
+tmp
+**.swp
+**.swo
+**.DS_Store
+Resources/fonts/MuseoSlab100

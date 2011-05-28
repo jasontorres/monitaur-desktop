@@ -1,0 +1,82 @@
+<html> 
+  <head>
+
+    <script type="text/javascript" src="vendor/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="vendor/underscore-1.1.6.js"></script> 
+    <script type="text/javascript" src="vendor/backbone.js"></script>
+    <script type="text/javascript" src="vendor/backbone-localstorage.js"></script>    
+    <script src="backend/monitaur.js" type="text/javascript" charset="utf-8"></script>
+
+    <link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+      body {
+        background: #1C1C1C;
+        color: #FFFFFF;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="add_site" class="alignRight">
+        <div class="btn_link">
+          <button id="add_site_button" onclick="Monitaur.showAddSite();">
+            <span>Add Site</span>
+          </button>
+        </div> 
+      </div>      
+      <h1 id="logo">Monitaur</h1>
+    </div>
+
+
+    <!-- Site Creation Form -->
+    <div id="add_site_form_container" class="hidden">
+      <form method="get" action="" id="add_site_form" onsubmit="Monitaur.createSite();return false;">
+        <label for="url">URL:</label>
+        <input type="text" value="" id="create-url-input" name="url" class="leftMargined"/>
+        <div class="clearFix large_break"></div>
+        <div class="btn_link">
+          <button>
+            <span>Save</span>
+          </button>
+        </div> 
+
+        <div class="link_actions leftMargined"> 
+          &nbsp;<a href="javascript:void(0);" onclick="Monitaur.cancelAddSite();return false;">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+
+    <!-- End Site Creation Form -->
+
+    <div id="monitaurapp">
+  
+      <ul id="sites">
+
+      </ul>
+
+    </div>
+
+    <script type="text/template" id="site-template">
+      <div class="clearFix"></div>
+        <span class="site-status-icon">
+          <a href="#"><img src="images/green.png" /></a>
+        </span>
+        
+        <a href="#" class="site-name"></a>
+
+
+        <div class="site-details hidden"><center><img src="images/ajax-loader.gif" /></center></div>
+        <span class="site-destroy"></span>
+      <!--
+      <div class="edit">
+        <input class="site-input" type="text" value="" />
+      </div>
+      -->
+    </script>    
+
+
+  </body>
+</html>

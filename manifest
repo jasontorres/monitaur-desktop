@@ -1,0 +1,20 @@
+#appname:Monitaur
+#appid:com.proudcloud.monitaur
+#publisher:Jason
+#image:default_app_logo.png
+#url:http://www.monitaurapp.com
+#guid:b569a97d-47da-4d93-9803-93daf972cfea
+#desc:Website Monitauring
+#type:desktop
+runtime:1.1.0
+tiapp:1.1.0
+tifilesystem:1.1.0
+tiplatform:1.1.0
+tiui:1.1.0
+ticodec:1.1.0
+tidatabase:1.1.0
+timedia:1.1.0
+timonkey:1.1.0
+tinetwork:1.1.0
+tiprocess:1.1.0
+tiworker:1.1.0
