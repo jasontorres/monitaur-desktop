@@ -1013,17 +1013,26 @@ form input[type="email"] {
 #add_site {
   position:absolute;
   right: 10px;
-  margin-right:5px;
   margin-top:10px;
 }
 
 #add_site_form_container {
   overflow: auto;
   overflow-x:hidden;
-
   border:1px solid #000;
   padding: 5px;
 
+}
+
+#refresh_interval_wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display:inline;
+}
+
+select#refresh_interval {
+  display:inline
 }
 
 .link_actions {
@@ -1044,7 +1053,7 @@ ul#sites {
 
 ul#sites li {
   padding:5px 0;
-  border-bottom: 1px dashed #CCC;
+  border-bottom: 1px dotted #555;
 }
 
 ul#sites img {
@@ -1063,4 +1072,10 @@ ul#sites li ul.site-sysinfo li {
   padding:0;margin:0;
   border-bottom:0;
   font-family: arial;
+}
+
+#last_update {
+  font-size: 11px;
+  margin-left: 10px;
+  color: #555;
 }

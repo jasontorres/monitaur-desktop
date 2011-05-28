@@ -3,7 +3,6 @@ var Monitaur = {};
 Monitaur.init = function() {
 
   window.Site = Backbone.Model.extend({
-
     defaults: {
       url: "",
       interval: 10000
@@ -31,7 +30,7 @@ Monitaur.init = function() {
     initialize: function() {
       _.bindAll(this, 'render');
       this.model.bind('change', this.render);
-      this.model.view = this;
+      this.model.view = this;   
     },
     render: function() {
       $(this.el).html(this.template(this.model.toJSON()));
@@ -78,8 +77,7 @@ Monitaur.init = function() {
       })
       .error(function(data) { 
         //result = "<p class='errorLoading'>Error loading</p>";
-        //target.$('.site-details').html(result);
-        
+        //target.$('.site-details').html(result);        
         target.$('.site-details').html("");
         target.down();   
       })
@@ -112,7 +110,9 @@ Monitaur.init = function() {
 
   window.AppView = Backbone.View.extend({
     el: $("#monitaurapp"),
-    events: {},
+    events: {
+      "change #refresh_interval" : "restartTimer"
+    },
     initialize: function() {
       _.bindAll(this, 'addOne', 'addAll', 'render');
 
@@ -123,8 +123,9 @@ Monitaur.init = function() {
       Sites.fetch();
     },
     render: function() {
-
-
+      this.$("#sites").html("");
+      this.addAll();
+      this.$("#last_update").html(Date.now().toString());
     },
     addOne: function(site) {
       var view = new SiteView({model:site});
@@ -132,9 +133,24 @@ Monitaur.init = function() {
     },
     addAll: function() {
       Sites.each(this.addOne);
+      this.stopTimer();
+      this.monitor();
     },
     showDetails: function() {
 
+    },
+    monitor : function() {
+      interval = $('#refresh_interval').val();
+      console.log("Monitor Starting/Restarting at: "+ interval);      
+      var timer  = window.setInterval ("window.App.render();", interval);
+      this.timer = timer;
+    }, 
+    stopTimer: function() {
+      window.clearInterval(this.timer);
+    },
+    restartTimer: function() {
+      this.stopTimer();
+      this.monitor();
     }
 
   });
